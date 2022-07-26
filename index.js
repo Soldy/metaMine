@@ -30,22 +30,22 @@ const _DeltaBase = function (){
     const _dataMine = function(lines){
         let out = {};
         for (let line of lines){
-             if(line.slice(0, 1) !== '*')
-                 continue;
-             let cleaned = line.replace('*', '')
-                  .replace(/^\s*/gm, '');
-             if(cleaned.slice(0, 1) !== '@')
-                  continue;
-             cleaned = cleaned.replace('@', '');
-             let name = cleaned.slice(0, cleaned.indexOf(' '));
-             let value = cleaned.replace(name, '')
-                  .replace(/^\s*/gm, '');
-             if(typeof out[name] === 'undefined')
-                 out[name] = [];
-             if(value === 'true')
-                 out[name].push(true);
-             else 
-                 out[name].push(value);
+            if(line.slice(0, 1) !== '*')
+                continue;
+            let cleaned = line.replace('*', '')
+                .replace(/^\s*/gm, '');
+            if(cleaned.slice(0, 1) !== '@')
+                continue;
+            cleaned = cleaned.replace('@', '');
+            let name = cleaned.slice(0, cleaned.indexOf(' '));
+            let value = cleaned.replace(name, '')
+                .replace(/^\s*/gm, '');
+            if(typeof out[name] === 'undefined')
+                out[name] = [];
+            if(value === 'true')
+                out[name].push(true);
+            else 
+                out[name].push(value);
         }
         return out;
     };
@@ -58,10 +58,10 @@ const _DeltaBase = function (){
                 if(_lastLineCheck(i))
                     return out;
             }else
-                if(_firstLineCheck(i)){
-                    out.push(i);
-                    started = true;
-                }
+            if(_firstLineCheck(i)){
+                out.push(i);
+                started = true;
+            }
         throw Error('No meta tag found');
     };
 };
@@ -78,40 +78,40 @@ const _MonkeyBase = function (){
     const _firstLineCheck = (line)=>{
         line = line.replace(/^\s*/gm, '');
         if(
-             (line.slice(0, 2) === '//')&&
+            (line.slice(0, 2) === '//')&&
              (line.toLowerCase().indexOf('==userscript==') > 1)
         )
-             return true;
+            return true;
         return false;
     };
     const _lastLineCheck = (line)=>{
         line = line.replace(/^\s*/gm, '');
         if(
-             (line.slice(0, 2) === '//')&&
+            (line.slice(0, 2) === '//')&&
              (line.toLowerCase().indexOf('==/userscript==') > 1)
         )
-             return true;
+            return true;
         return false;
     };
     const _dataMine = function(lines){
         let out = {};
         for (let line of lines){
-             if(line.slice(0, 2) !== '//')
-                 continue;
-             let cleaned = line.replace('//', '')
-                  .replace(/^\s*/gm, '');
-             if(cleaned.slice(0, 1) !== '@')
-                  continue;
-             cleaned = cleaned.replace('@', '');
-             let name = cleaned.slice(0, cleaned.indexOf(' '));
-             let value = cleaned.replace(name, '')
-                  .replace(/^\s*/gm, '');
-             if(typeof out[name] === 'undefined')
-                 out[name] = [];
-             if(value === 'true')
-                 out[name].push(true);
-             else 
-                 out[name].push(value);
+            if(line.slice(0, 2) !== '//')
+                continue;
+            let cleaned = line.replace('//', '')
+                .replace(/^\s*/gm, '');
+            if(cleaned.slice(0, 1) !== '@')
+                continue;
+            cleaned = cleaned.replace('@', '');
+            let name = cleaned.slice(0, cleaned.indexOf(' '));
+            let value = cleaned.replace(name, '')
+                .replace(/^\s*/gm, '');
+            if(typeof out[name] === 'undefined')
+                out[name] = [];
+            if(value === 'true')
+                out[name].push(true);
+            else 
+                out[name].push(value);
         }
         return out;
     };
@@ -124,9 +124,9 @@ const _MonkeyBase = function (){
                 if(_lastLineCheck(i))
                     return out;
             }else if(_firstLineCheck(i)){
-                    out.push(i);
-                    started = true;
-                }
+                out.push(i);
+                started = true;
+            }
         throw Error('No meta tag found');
     };
 };
@@ -134,7 +134,7 @@ const _MonkeyBase = function (){
 const _MetaMineBase = function(){
     this.read = function(input_){
         return _read(input_);
-    }
+    };
     const _types = [
         'delta',
         'monkey'
@@ -152,7 +152,7 @@ const _MetaMineBase = function(){
         const raw = _agents[type].getRaw(lines);
         return _agents[type].dataMine(raw);
 
-    }
+    };
     const _typeCheck = function(lines){
         for(let i of lines){
             if(_agents.monkey.typeCheck(i))
@@ -161,9 +161,9 @@ const _MetaMineBase = function(){
                 return 0;
         }
         throw Error('Unknown meta type');
-    }
+    };
 
-}
+};
 
 
 
