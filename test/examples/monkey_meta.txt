@@ -1,0 +1,11 @@
+// ==UserScript==
+// @name         tadada
+// @version      0.2.66
+// @description  kavabunga
+// @author       Wanghsinche 
+// @include      http://www.test.com.us/*
+// @include      http://test.com
+// @require      http://meme.com/andera.js
+// @grant        GM_xmlhttpRequest
+// @run-at document-body
+// ==/UserScript==

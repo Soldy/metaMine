@@ -1,0 +1,13 @@
+
+
+
+     /** DeltaScript
+*   @testa       ok that have to be
+*   testb        just read it
+    @testc       one that should not there
+*    @json:first  just test
+//  testd:       nice
+*
+# comment is here free to do
+**/
+
